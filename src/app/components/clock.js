@@ -12,7 +12,6 @@ export class Clock extends React.Component {
             this.setState({
                 dateString: Date().toString()
             })
-            console.log('HI');
         },1000)
         return (
             <div>
