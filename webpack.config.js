@@ -12,9 +12,10 @@ var config = {
         publicPath: "/app/"
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js?/,
+                enforce: "pre",
                 include: SRC_DIR,
                 loader: "babel-loader",
                 query: {
