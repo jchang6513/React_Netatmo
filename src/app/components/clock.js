@@ -4,18 +4,21 @@ export class Clock extends React.Component {
     constructor() {
         super();
         this.state = {
-            dateString: Date().toString()
+            timeString: Date().toString().substring(16,21),
+            dateString: Date().toString().substring(0,10).toUpperCase()
         }
     }
     render() {
         setInterval(()=>{
             this.setState({
-                dateString: Date().toString()
+                timeString: Date().toString().substring(16,21),
+                dateString: Date().toString().substring(0,10).toUpperCase()
             })
         },1000)
         return (
-            <div>
-                <h1>{this.state.dateString}</h1>
+            <div class='col-12 m-0 p-0 py-5 d-inline-block text-center'>
+                <h1 id='clock'>{this.state.timeString}</h1>
+                <h1 id='date'>{this.state.dateString}</h1>
             </div>
         );
     }

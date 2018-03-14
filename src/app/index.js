@@ -3,20 +3,22 @@ import { render } from 'react-dom';
 
 import { Clock } from './components/clock.js';
 import { Netatmo } from './components/netatmo.js';
-
+import { Forecast } from './components/forecast.js';
 
 class App extends React.Component {
     render () {
         return (
-            <div>
-                <Clock/>
-                <Netatmo/>
-                <h1>Hello World!!!</h1>
+            <div class='col-12'>
+                <div class='row'>
+                    <div class='col-9-16 ml-auto mr-auto'>
+                        <Clock/>
+                        <Netatmo/>
+                        <Forecast/>
+                    </div>
+                </div>
             </div>
         )        
     }
 }
 
 render(<App/>,window.document.getElementById('app'));
-
-window.data = data;
