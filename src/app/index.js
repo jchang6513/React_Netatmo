@@ -8,9 +8,9 @@ import { Forecast } from './components/forecast.js';
 class App extends React.Component {
     render () {
         return (
-            <div class='col-12'>
-                <div class='row'>
-                    <div class='col-9-16 ml-auto mr-auto'>
+            <div className='col-12'>
+                <div className='row'>
+                    <div className='col-9-16 ml-auto mr-auto'>
                         <Clock/>
                         <Netatmo/>
                         <Forecast/>
