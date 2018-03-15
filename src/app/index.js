@@ -13,8 +13,8 @@ class App extends React.Component {
                     <div className='col-9-16 ml-auto mr-auto'>
                         <Clock/>
                         <Netatmo/>
-
                         <Forecast/>
+                        <img className='float-right' src='https://poweredby.yahoo.com/white_retina.png'></img>
                     </div>
                 </div>
             </div>

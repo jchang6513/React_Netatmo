@@ -13,9 +13,15 @@ export class Netatmo extends React.Component {
     }
         
     render() {
-        const { nStore } = this.state;
-        const { fStore } = this.state;
         
+        setTimeout(()=>{
+            this.setState({
+                nStore: NetatmoStore.getAll(),
+                fStore: ForecastStore.getAll()
+            })
+        },2000)
+        const { nStore } = this.state;
+        const { fStore } = this.state;        
         return(
             <div className='col-12 m-0 p-0 d-flex justify-content-between'>
                 <div className='col-6 m-0 ml-2 pl-4 py-4 p-0'>
@@ -26,7 +32,7 @@ export class Netatmo extends React.Component {
                         <div className='col-8 m-0 p-0'>
                             <h1 id='temp'>{nStore.oTemp}</h1>
                         </div>
-                        <div className='col-3 m-0 p-0 pl-4 mt-2 pt-3'>
+                        <div className='col-3 m-0 p-0 pl-4 mt-2 pt-2'>
                             <p id='mMtemp'>{nStore.oMTemp}</p>
                             <p id='mMtemp'>{nStore.omTemp}</p>
                         </div>
@@ -37,7 +43,7 @@ export class Netatmo extends React.Component {
                             {nStore.oHum}<small><small>%</small></small></h1>
                         <h1 id='inform'>PM<sub>2.5</sub></h1>
                         <h1 id='inform' className='text-right'>
-                            {nStore.oPM25}<small><small><small>ppm</small></small></small></h1>                        
+                            {nStore.oPM25}<small><small><small>&mu;g/m<sup>3</sup></small></small></small></h1>                        
                     </div>                    
                 </div>
                 <div className='col-6 m-0 p-0 pl-4 py-4'>
@@ -48,7 +54,7 @@ export class Netatmo extends React.Component {
                         <div className='col-8 m-0 p-0'>
                             <h1 id='temp'>{nStore.iTemp}</h1>
                         </div>
-                        <div className='col-3 m-0 p-0 pl-4 pt-3'>
+                        <div className='col-3 m-0 p-0 pl-4 pt-2'>
                             <p id='mMtemp'>{nStore.iMTemp}</p>
                             <p id='mMtemp'>{nStore.imTemp}</p>
                         </div>
