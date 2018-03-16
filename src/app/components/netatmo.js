@@ -10,31 +10,33 @@ export class Netatmo extends React.Component {
             nStore: NetatmoStore.getAll(),
             fStore: ForecastStore.getAll(),
         }
-    }
-        
-    render() {
-        
-        setTimeout(()=>{
+        setInterval(()=>{
             this.setState({
                 nStore: NetatmoStore.getAll(),
                 fStore: ForecastStore.getAll()
             })
-        },2000)
+        },1000)        
+    }
+        
+    render() {
+        
+
+        
         const { nStore } = this.state;
         const { fStore } = this.state;        
         return(
             <div className='col-12 m-0 p-0 d-flex justify-content-between'>
                 <div className='col-6 m-0 ml-2 pl-4 py-4 p-0'>
                     <div className='col-11 mr-4 align-center'>
-                        <img className='d-block mx-auto' src={fStore[0].text} height='300px'></img>
+                        <img id='today_icon' className='d-block mx-auto' src={fStore[0].text}></img>
                     </div>
                     <div className='row m-0 p-0 d-flex flex-row'>                                                
                         <div className='col-8 m-0 p-0'>
                             <h1 id='temp'>{nStore.oTemp}</h1>
                         </div>
-                        <div className='col-3 m-0 p-0 pl-4 mt-2 pt-2'>
-                            <p id='mMtemp'>{nStore.oMTemp}</p>
-                            <p id='mMtemp'>{nStore.omTemp}</p>
+                        <div className='col-3 m-0 p-0 pt-1'>
+                            <p id='mMtemp' className='text-right'>{nStore.oMTemp}</p>
+                            <p id='mMtemp' className='text-right'>{nStore.omTemp}</p>
                         </div>
                     </div>
                     <div className='col-11 m-0 p-0 pt-4'>
@@ -48,15 +50,15 @@ export class Netatmo extends React.Component {
                 </div>
                 <div className='col-6 m-0 p-0 pl-4 py-4'>
                     <div className='col-11 align-center m-0'>
-                        <img className='d-block mx-auto' src='http://www.ss.ncu.edu.tw/~istep/Netatmo_Clock/data/indoor.png' height='300px'></img>
+                        <img id='today_icon' className='d-block mx-auto' src='http://www.ss.ncu.edu.tw/~istep/Netatmo_Clock/data/indoor.png'></img>
                     </div>                    
                     <div className='row m-0 p-0 d-flex flex-row'>
                         <div className='col-8 m-0 p-0'>
                             <h1 id='temp'>{nStore.iTemp}</h1>
                         </div>
-                        <div className='col-3 m-0 p-0 pl-4 pt-2'>
-                            <p id='mMtemp'>{nStore.iMTemp}</p>
-                            <p id='mMtemp'>{nStore.imTemp}</p>
+                        <div className='col-3 m-0 p-0 pt-1'>
+                            <p id='mMtemp' className='text-right'>{nStore.iMTemp}</p>
+                            <p id='mMtemp' className='text-right'>{nStore.imTemp}</p>
                         </div>
                     </div>
                     <div className='col-11 m-0 p-0 pt-4'>

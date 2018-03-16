@@ -21,7 +21,7 @@ class NetatmoStore extends EventEmitter {
     }
 
     fetch_Netatmo() {
-        fetch("https://pm25.lass-net.org/data/last.php?device_id=74DA38E69D82").then((Response) => 
+        fetch("http://www.ss.ncu.edu.tw/~istep/Netatmo_Clock/data/pm25.json").then((Response) => 
             Response.json()
         ).then((findresponse) => {   
             this.netatmo.oPM25 = findresponse["feeds"][0]["AirBox"]['s_d0']
@@ -40,6 +40,7 @@ class NetatmoStore extends EventEmitter {
             this.netatmo.iHum   = findresponse['body']['devices'][0]['dashboard_data']['Humidity'];
             this.netatmo.iCO2   = findresponse['body']['devices'][0]['dashboard_data']['CO2'];
         });
+//        console.log('netatmoStore update')
     }    
     
     getAll() {

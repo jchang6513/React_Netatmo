@@ -17,8 +17,8 @@ class ForecastStore extends EventEmitter {
             8: 'freezing_drizzle_day_night',
             9: 'drizzle_day_night',
             10: 'freezing_rain_day_night',
-            11: 'showers_day_night',
-            12: 'showers_day_night',
+            11: 'rain_day_night',
+            12: 'rain_day_night',
             13: 'snow_flurries_day_night',
             14: 'light_snow_showers_day_night',
             15: 'blowing_snow_day_night',
@@ -37,10 +37,10 @@ class ForecastStore extends EventEmitter {
             28: 'mostly_cloudy_day_night',
             29: 'partly_cloudy_day',
             30: 'partly_cloudy_day',
-            31: 'clear_(night)_day_night',
+            31: 'clear_night',
             32: 'sunny_day_night',
-            33: 'fair_(night)_day_night',
-            34: 'fair_(day)_day_night',
+            33: 'fair_night',
+            34: 'fair_day',
             35: 'mixed_rain_and_hail_day_night',
             36: 'hot_day_night',
             37: 'isolated_thunderstorms_day_night',
@@ -103,6 +103,7 @@ class ForecastStore extends EventEmitter {
                     }            
             ]
         })
+//        console.log('yahoo forecast update')
     }
     
     getAll() {
