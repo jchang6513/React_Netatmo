@@ -16,7 +16,7 @@ class NetatmoStore extends EventEmitter {
             iMTemp: data['body']['devices'][0]['dashboard_data']['max_temp'].toFixed(1),
             imTemp: data['body']['devices'][0]['dashboard_data']['min_temp'].toFixed(1),
             iHum: data['body']['devices'][0]['dashboard_data']['Humidity'],
-            iCO2: data['body']['devices'][0]['dashboard_data']['CO2']         
+            iCO2: data['body']['devices'][0]['dashboard_data']['CO2'],
         }
     }
 
@@ -40,10 +40,23 @@ class NetatmoStore extends EventEmitter {
             this.netatmo.iHum   = findresponse['body']['devices'][0]['dashboard_data']['Humidity'];
             this.netatmo.iCO2   = findresponse['body']['devices'][0]['dashboard_data']['CO2'];
         });
+        
+        fetch("https://api.nasa.gov/planetary/apod?api_key=NNKOjkoul8n1CH18TWA9gwngW1s1SmjESPjNoUFo&hd=true")
+        .then((Response) => Response.json())
+        .then((findresponse) => {
+            this.netatmo.url   = findresponse['url'];
+        });
 //        console.log('netatmoStore update')
     }    
     
     getAll() {
+        var d = new Date()
+        if (d.getHours()>=6 && d.getHours()<18) {
+            document.body.style.background = "url(http://www.ss.ncu.edu.tw/~istep/Netatmo_Clock/data/day.jpg)";    
+        } else {
+            document.body.style.background = "url(http://www.ss.ncu.edu.tw/~istep/Netatmo_Clock/data/night.jpg)";
+        }
+        document.body.style.backgroundSize = "cover";
         this.fetch_Netatmo();
         return this.netatmo;
     }

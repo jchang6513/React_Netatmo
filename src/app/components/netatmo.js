@@ -19,11 +19,9 @@ export class Netatmo extends React.Component {
     }
         
     render() {
-        
 
-        
         const { nStore } = this.state;
-        const { fStore } = this.state;        
+        const { fStore } = this.state;
         return(
             <div className='col-12 m-0 p-0 d-flex justify-content-between'>
                 <div className='col-6 m-0 ml-2 pl-4 py-4 p-0'>
