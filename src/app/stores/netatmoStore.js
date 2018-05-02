@@ -51,7 +51,7 @@ class NetatmoStore extends EventEmitter {
     
     getAll() {
         var d = new Date()
-        if (d.getHours()>=6 && d.getHours()<18) {
+        if (d.getHours()>=4 && d.getHours()<17) {
             document.body.style.background = "url(http://www.ss.ncu.edu.tw/~istep/Netatmo_Clock/data/day.jpg)";    
         } else {
             document.body.style.background = "url(http://www.ss.ncu.edu.tw/~istep/Netatmo_Clock/data/night.jpg)";
