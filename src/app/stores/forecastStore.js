@@ -74,14 +74,14 @@ class ForecastStore extends EventEmitter {
                 Mtemp: forecast['query']['results']["channel"]['item']['forecast'][2]['high'],
                 mtemp: forecast['query']['results']["channel"]['item']['forecast'][2]['low'],
                 text: 'https://s.yimg.com/os/weather/1.0.1/shadow_icon/60x60/'+this.condition[forecast['query']['results']["channel"]['item']['forecast'][2]['code']]+'@2x.png'
-            }            
+            }
         ]
     }
 
     fetch_forecast() {
         fetch("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22taoyuan%2C%20tw%22)%20and%20u%3D%27c%27&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys")
         .then((Response) => Response.json())
-        .then((findresponse) => {   
+        .then((findresponse) => {
             this.forecast = [
                     {
                         date: findresponse['query']['results']["channel"]['item']['forecast'][0]['day'].toUpperCase(),
@@ -100,12 +100,12 @@ class ForecastStore extends EventEmitter {
                         Mtemp: findresponse['query']['results']["channel"]['item']['forecast'][2]['high'],
                         mtemp: findresponse['query']['results']["channel"]['item']['forecast'][2]['low'],
                         text: 'https://s.yimg.com/os/weather/1.0.1/shadow_icon/60x60/'+this.condition[findresponse['query']['results']["channel"]['item']['forecast'][2]['code']]+'@2x.png'
-                    }            
+                    }
             ]
         })
 //        console.log('yahoo forecast update')
     }
-    
+
     getAll() {
         this.fetch_forecast();
         return this.forecast;

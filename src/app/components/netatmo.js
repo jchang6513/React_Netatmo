@@ -15,9 +15,9 @@ export class Netatmo extends React.Component {
                 nStore: NetatmoStore.getAll(),
                 fStore: ForecastStore.getAll()
             })
-        },1000)        
+        },1000)
     }
-        
+
     render() {
 
         const { nStore } = this.state;
@@ -28,7 +28,7 @@ export class Netatmo extends React.Component {
                     <div className='col-11 mr-4 align-center'>
                         <img id='today_icon' className='d-block mx-auto' src={fStore[0].text}></img>
                     </div>
-                    <div className='row m-0 p-0 d-flex flex-row'>                                                
+                    <div className='row m-0 p-0 d-flex flex-row'>
                         <div className='col-8 m-0 p-0'>
                             <h1 id='temp'>{nStore.oTemp}</h1>
                         </div>
@@ -43,13 +43,13 @@ export class Netatmo extends React.Component {
                             {nStore.oHum}<small><small>%</small></small></h1>
                         <h1 id='inform'>PM<sub>2.5</sub></h1>
                         <h1 id='inform' className='text-right'>
-                            {nStore.oPM25}<small><small><small>&mu;g/m<sup>3</sup></small></small></small></h1>                        
-                    </div>                    
+                            {nStore.oPM25}<small><small><small>{String.fromCharCode(181)}g/m<sup>3</sup></small></small></small></h1>                        
+                    </div>
                 </div>
                 <div className='col-6 m-0 p-0 pl-4 py-4'>
                     <div className='col-11 align-center m-0'>
                         <img id='today_icon' className='d-block mx-auto' src='http://www.ss.ncu.edu.tw/~istep/Netatmo_Clock/data/indoor.png'></img>
-                    </div>                    
+                    </div>
                     <div className='row m-0 p-0 d-flex flex-row'>
                         <div className='col-8 m-0 p-0'>
                             <h1 id='temp'>{nStore.iTemp}</h1>

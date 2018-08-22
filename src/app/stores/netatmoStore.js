@@ -21,13 +21,13 @@ class NetatmoStore extends EventEmitter {
     }
 
     fetch_Netatmo() {
-        fetch("http://www.ss.ncu.edu.tw/~istep/Netatmo_Clock/data/pm25.json").then((Response) => 
+        fetch("http://www.ss.ncu.edu.tw/~istep/Netatmo_Clock/data/pm25.json?nocache").then((Response) =>
             Response.json()
-        ).then((findresponse) => {   
+        ).then((findresponse) => {
             this.netatmo.oPM25 = findresponse["feeds"][0]["AirBox"]['s_d0']
         }).catch(function(exc) {
         });
-        fetch("http://www.ss.ncu.edu.tw/~istep/Netatmo_Clock/data/data.json")
+        fetch("http://www.ss.ncu.edu.tw/~istep/Netatmo_Clock/data/data.json?nocache")
         .then((Response) => Response.json())
         .then((findresponse) => {
             this.netatmo.oTemp  = findresponse['body']['modules'][0]['dashboard_data']['Temperature'].toFixed(1);
@@ -40,19 +40,12 @@ class NetatmoStore extends EventEmitter {
             this.netatmo.iHum   = findresponse['body']['devices'][0]['dashboard_data']['Humidity'];
             this.netatmo.iCO2   = findresponse['body']['devices'][0]['dashboard_data']['CO2'];
         });
-        
-        fetch("https://api.nasa.gov/planetary/apod?api_key=NNKOjkoul8n1CH18TWA9gwngW1s1SmjESPjNoUFo&hd=true")
-        .then((Response) => Response.json())
-        .then((findresponse) => {
-            this.netatmo.url   = findresponse['url'];
-        });
-//        console.log('netatmoStore update')
-    }    
-    
+    }
+
     getAll() {
         var d = new Date()
         if (d.getHours()>=4 && d.getHours()<17) {
-            document.body.style.background = "url(http://www.ss.ncu.edu.tw/~istep/Netatmo_Clock/data/day.jpg)";    
+            document.body.style.background = "url(http://www.ss.ncu.edu.tw/~istep/Netatmo_Clock/data/day.jpg)";
         } else {
             document.body.style.background = "url(http://www.ss.ncu.edu.tw/~istep/Netatmo_Clock/data/night.jpg)";
         }
@@ -65,6 +58,3 @@ class NetatmoStore extends EventEmitter {
 const netatmoStore = new NetatmoStore;
 
 export default netatmoStore;
-
-window.data = data;
-window.airbox = airbox;

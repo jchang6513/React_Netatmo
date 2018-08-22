@@ -12,9 +12,9 @@ export class Clock extends React.Component {
                 timeString: Date().toString().substring(16,21),
                 dateString: Date().toString().substring(0,10).toUpperCase()
             })
-        },1000)        
+        },1000)
     }
-    
+
     updateClock() {
         this.setState({
             timeString: Date().toString().substring(16,21),
